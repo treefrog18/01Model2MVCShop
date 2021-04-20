@@ -28,9 +28,8 @@ public class PurchaseServiceImpl implements PurchaseService{
 	}
 
 	@Override
-	public PurchaseVO getPurchase2(int ProdNo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public PurchaseVO getPurchase2(int prodNo) throws Exception {
+		return purchaseDAO.findPurchase2(prodNo);
 	}
 
 	@Override
@@ -55,21 +54,4 @@ public class PurchaseServiceImpl implements PurchaseService{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	/*
-	public HashMap<String,Object> getPurchaseList(SearchVO searchVO) throws Exception {
-		return purchaseDAO.getPurchaseList(searchVO);
-	}
-	
-
-	public void updateProduct(ProductVO productVO) throws Exception {
-		productDAO.updateProduct(productVO);
-		
-	}
-
-	public ProductVO getProduct(int prodNo) throws Exception {
-		
-		return productDAO.findProduct(prodNo);
-	}
-	*/
 }

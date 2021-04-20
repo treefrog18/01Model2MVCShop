@@ -4,6 +4,8 @@
 <%@ page import="java.util.*"  %>
 <%@ page import="com.model2.mvc.service.product.vo.*" %>
 <%@ page import="com.model2.mvc.common.*" %>
+<%@ page import="com.model2.mvc.service.purchase.vo.*" %>
+<%@ page import="com.model2.mvc.service.purchase.dao.*" %>
 
 <%
 	HashMap<String,Object> map=(HashMap<String,Object>)request.getAttribute("map");
@@ -180,7 +182,10 @@ function fncGetProductList(){
 		<td></td>
 		<td align="left">
 		
-			판매중
+			판매중&nbsp;&nbsp;&nbsp; 
+			<%if(menu.equals("manage")) { %>
+			<a href="/updateTrancode.do?prodNo=<%=productVO.getProdNo()%>">배송하기</a>
+			<% }%>
 			</td>
 		</tr>
 	<tr>
