@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.framework.Action;

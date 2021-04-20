@@ -181,10 +181,11 @@ function fncGetProductList(){
 		<td align="left"><%=productVO.getRegDate() %></td>
 		<td></td>
 		<td align="left">
-		
+			<%if(productVO.getProTranCode().equals(null)){ %>
 			판매중&nbsp;&nbsp;&nbsp; 
-			<%if(menu.equals("manage")) { %>
-			<a href="/updateTrancode.do?prodNo=<%=productVO.getProdNo()%>">배송하기</a>
+			<%} %>
+			<%if(menu.equals("manage") && productVO.getProTranCode().equals("1")) { %>
+			구매완료&nbsp;&nbsp;&nbsp;<a href="/updateTrancode.do?prodNo=<%=productVO.getProdNo()%>&tranCode=<%=productVO.getProTranCode()%>">배송하기</a>
 			<% }%>
 			</td>
 		</tr>
