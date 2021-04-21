@@ -14,14 +14,17 @@ public class UpdateTranCodeAction extends Action {
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
+		
 		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
 		PurchaseService service=new PurchaseServiceImpl();
 		PurchaseVO purchaseVO=service.getPurchase2(prodNo);
+		System.out.println(purchaseVO);
+		
 		
 		service.updateTranCode(purchaseVO);
 		
 		request.setAttribute("purchaseVO", purchaseVO);
-		
-		return "forward:/purchase/updatePurchase.jsp";
+		System.out.println(purchaseVO);
+		return "forward:/listProduct.do?menu=manage";
 	}
 }

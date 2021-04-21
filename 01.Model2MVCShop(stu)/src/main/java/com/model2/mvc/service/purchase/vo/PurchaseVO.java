@@ -108,6 +108,6 @@ public class PurchaseVO {
 				+ paymentOption + ", purchaseProd=" + purchaseProd
 				+ ", receiverName=" + receiverName + ", receiverPhone="
 				+ receiverPhone + ", tranCode=" + tranCode + ", tranNo="
-				+ tranNo + "]";
+				+ tranNo + ", prodNo="+prodNo+"]";
 	}
 }

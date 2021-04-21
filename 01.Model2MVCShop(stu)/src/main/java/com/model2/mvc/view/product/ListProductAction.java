@@ -41,6 +41,7 @@ public class ListProductAction extends Action {
 		request.setAttribute("menu", menu);
 		request.setAttribute("searchVO", searchVO);
 		
+		
 		return "forward:/product/listProduct.jsp";
 	}
 }

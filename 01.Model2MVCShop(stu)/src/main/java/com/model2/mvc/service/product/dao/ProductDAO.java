@@ -67,7 +67,8 @@ public class ProductDAO {
 		Connection con = DBUtil.getConnection();
 		
 		String sql = "select p.prod_no, p.prod_name, p.reg_date, p.price,"
-				+ " t.tran_status_code from product p, transaction t"
+				+ " nvl(t.tran_status_code, 0) tran_status_code  "
+				+ "from product p, transaction t"
 				+ " where p.prod_no = t.prod_no(+) ";
 		if (searchVO.getSearchCondition() != null) {
 			if (searchVO.getSearchCondition().equals("0")) {
@@ -105,7 +106,7 @@ public class ProductDAO {
 				vo.setProdName(rs.getString("PROD_NAME"));
 				vo.setRegDate(rs.getDate("REG_DATE"));
 				vo.setPrice(rs.getInt("PRICE"));
-				vo.setProTranCode(rs.getString("tran_status_code"));
+				vo.setProTranCode(rs.getString("tran_status_code").trim());
 				
 				list.add(vo);
 				if (!rs.next())

@@ -109,8 +109,20 @@ if(total > 0) {
 					<%System.out.println("구매완료"); %> 
 					구매완료
 					<%} %>
-					상태 입니다.
-				
+					
+					<%if((purchaseVO.getTranCode()).equals("2")) {%> 
+					배송중
+					<%} %>
+					
+					<%if((purchaseVO.getTranCode()).equals("3")) {%> 
+					배송완료
+					<%} %>
+					상태 입니다.</td>
+		<td></td>
+		<td align="left">		
+			<%if((purchaseVO.getTranCode()).equals("2")) {%>
+			<a href="/updateTranCode.do?tranNo=<%=purchaseVO.getTranNo()%>&tranCode=<%=purchaseVO.getTranCode()%>">물건도착</a>
+			<%} %>
 		</td>
 	</tr>
 	<tr>

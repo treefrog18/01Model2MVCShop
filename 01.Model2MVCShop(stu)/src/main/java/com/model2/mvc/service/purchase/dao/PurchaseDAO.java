@@ -110,7 +110,7 @@ public PurchaseVO findPurchase2(int prodNo) throws Exception {
 		}
 		
 		con.close();
-
+		System.out.println("DAO findPurchase:"+purchaseVO);
 		return purchaseVO;
 	}
 	
@@ -192,19 +192,28 @@ public PurchaseVO findPurchase2(int prodNo) throws Exception {
 	public void updateTranCode(PurchaseVO purchaseVO) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
-
-		String sql = "update transaction set tran_status_code=? where prod_no=?";
+		System.out.println("updatetrancode 시작");
+		String sql = "update transaction set ";
+		if(purchaseVO.getTranCode().equals("1")) {
+			sql += " tran_status_code = 2";
+		}else if(purchaseVO.getTranCode().equals("2")) {
+			sql += " tran_status_code = 3";
+		}
+		
+		sql += " where tran_no = ?";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
-		stmt.setString(1, purchaseVO.getPaymentOption().trim());
-		stmt.setString(2, purchaseVO.getReceiverName());
-		stmt.setString(3, purchaseVO.getReceiverPhone());
-		stmt.setString(4, purchaseVO.getDivyAddr());
-		stmt.setString(5, purchaseVO.getDivyRequest());
-		stmt.setString(6, purchaseVO.getDivyDate().replace("-", ""));
-		stmt.setInt(7, purchaseVO.getTranNo());
-		stmt.executeUpdate();
-		
+		//stmt.setString(1, purchaseVO.getPaymentOption().trim());
+		//stmt.setString(2, purchaseVO.getReceiverName());
+		//stmt.setString(3, purchaseVO.getReceiverPhone());
+		//stmt.setString(4, purchaseVO.getDivyAddr());
+		//stmt.setString(5, purchaseVO.getDivyRequest());
+		//stmt.setString(6, purchaseVO.getDivyDate().replace("-", ""));
+		stmt.setInt(1, purchaseVO.getTranNo());
+		int confirm = stmt.executeUpdate();
+		if(confirm == 1) {
+		System.out.println("업데이트 완료");
+		}
 		con.close();
 	}
 	
