@@ -202,6 +202,14 @@ function fncGetProductList(){
 			재고없음&nbsp;&nbsp;&nbsp; 
 			<%} %>
 			
+			<%if(menu.equals("search") && productVO.getProTranCode().equals("2")) {%>
+			재고없음&nbsp;&nbsp;&nbsp; 
+			<%} %>
+			
+			<%if(menu.equals("search") && productVO.getProTranCode().equals("3")) {%>
+			재고없음&nbsp;&nbsp;&nbsp; 
+			<%} %>
+			
 			
 			</td>
 		</tr>

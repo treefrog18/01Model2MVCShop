@@ -15,16 +15,30 @@ public class UpdateTranCodeAction extends Action {
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
 		
-		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		PurchaseService service=new PurchaseServiceImpl();
-		PurchaseVO purchaseVO=service.getPurchase2(prodNo);
-		System.out.println(purchaseVO);
 		
-		
-		service.updateTranCode(purchaseVO);
-		
-		request.setAttribute("purchaseVO", purchaseVO);
-		System.out.println(purchaseVO);
-		return "forward:/listProduct.do?menu=manage";
+		if(request.getParameter("prodNo") == null) {
+			int tranNo = Integer.parseInt(request.getParameter("tranNo"));
+			PurchaseService service=new PurchaseServiceImpl();
+			PurchaseVO purchaseVO=service.getPurchase(tranNo);
+			System.out.println(purchaseVO);
+			
+			service.updateTranCode(purchaseVO);
+			System.out.println(purchaseVO);
+			
+			request.setAttribute("purchaseVO", purchaseVO);
+			return "forward:/listPurchase.do";
+		}else {
+			int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+			PurchaseService service=new PurchaseServiceImpl();
+			PurchaseVO purchaseVO=service.getPurchase2(prodNo);
+			System.out.println(purchaseVO);
+			
+			
+			service.updateTranCode(purchaseVO);
+			
+			request.setAttribute("purchaseVO", purchaseVO);
+			System.out.println(purchaseVO);
+			return "forward:/listProduct.do?menu=manage";
+		}
 	}
 }
