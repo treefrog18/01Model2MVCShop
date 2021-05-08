@@ -3,10 +3,12 @@
 
 <%@ page import="com.model2.mvc.service.product.vo.*" %>
 
+
 <%
 	ProductVO productVO = (ProductVO)request.getAttribute("productVO");
 	
 	String menu = (String)request.getAttribute("menu");
+
 	
 	
 %>	
